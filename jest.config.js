@@ -21,6 +21,9 @@ const customJestConfig = {
     '!app/**/layout.tsx',
     '!app/**/page.tsx',
   ],
+  testEnvironmentOptions: {
+    customExportConditions: [''],
+  },
 }
 
 module.exports = createJestConfig(customJestConfig)

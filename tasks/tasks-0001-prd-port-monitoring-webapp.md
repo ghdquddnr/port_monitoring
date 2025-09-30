@@ -86,25 +86,25 @@ Based on PRD: `0001-prd-port-monitoring-webapp.md`
   - [x] 1.9 Jest 및 Testing Library 설정 (단위 테스트 환경)
 
 ### 2.0 인증 및 세션 관리 구현
-- [ ] 2.0 인증 및 세션 관리 구현
-  - [ ] 2.1 타입 정의 생성 (`app/types/api.ts`에 LoginRequest, LoginResponse, Session 타입)
-  - [ ] 2.2 세션 관리 유틸리티 구현 (`app/lib/auth.ts`: createSession, validateSession, deleteSession)
-  - [ ] 2.3 인증 유틸리티 단위 테스트 작성 (`app/lib/auth.test.ts`)
-  - [ ] 2.4 로그인 API 엔드포인트 구현 (`app/api/auth/login/route.ts`: POST, username/password 검증, 세션 생성)
-  - [ ] 2.5 로그아웃 API 엔드포인트 구현 (`app/api/auth/logout/route.ts`: POST, 세션 삭제)
-  - [ ] 2.6 인증 미들웨어 구현 (`app/middleware.ts`: protected routes 보호, 세션 검증)
-  - [ ] 2.7 로그인 페이지 UI 구현 (`app/login/page.tsx`: 로그인 폼, 에러 메시지)
-  - [ ] 2.8 로그인 API 통합 테스트 (Postman 또는 curl로 수동 테스트)
+- [x] 2.0 인증 및 세션 관리 구현
+  - [x] 2.1 타입 정의 생성 (`app/types/api.ts`에 LoginRequest, LoginResponse, Session 타입)
+  - [x] 2.2 세션 관리 유틸리티 구현 (`app/lib/auth.ts`: createSession, validateSession, deleteSession)
+  - [x] 2.3 인증 유틸리티 단위 테스트 작성 (`app/lib/auth.test.ts`)
+  - [x] 2.4 로그인 API 엔드포인트 구현 (`app/api/auth/login/route.ts`: POST, username/password 검증, 세션 생성)
+  - [x] 2.5 로그아웃 API 엔드포인트 구현 (`app/api/auth/logout/route.ts`: POST, 세션 삭제)
+  - [x] 2.6 인증 미들웨어 구현 (`app/middleware.ts`: protected routes 보호, 세션 검증)
+  - [x] 2.7 로그인 페이지 UI 구현 (`app/login/page.tsx`: 로그인 폼, 에러 메시지)
+  - [x] 2.8 로그인 API 통합 테스트 (Postman 또는 curl로 수동 테스트)
 
 ### 3.0 포트 모니터링 코어 기능 및 API 구현
 - [ ] 3.0 포트 모니터링 코어 기능 및 API 구현
-  - [ ] 3.1 타입 정의 생성 (`app/types/port.ts`: PortInfo, ProcessInfo, ConnectionState 타입)
-  - [ ] 3.2 시스템 명령어 실행 유틸리티 구현 (`app/lib/systemCommands.ts`: execAsync wrapper, 에러 처리)
-  - [ ] 3.3 시스템 명령어 유틸리티 단위 테스트 (`app/lib/systemCommands.test.ts`)
-  - [ ] 3.4 포트 정보 수집 로직 구현 (`app/lib/ports.ts`: getListeningPorts, parsePortOutput)
-  - [ ] 3.5 iptables 상태 확인 로직 구현 (`app/lib/ports.ts`: getBlockedPorts)
-  - [ ] 3.6 systemd 서비스 감지 로직 구현 (`app/lib/ports.ts`: isSystemdService)
-  - [ ] 3.7 포트 모니터링 로직 단위 테스트 (`app/lib/ports.test.ts`)
+  - [x] 3.1 타입 정의 생성 (`app/types/port.ts`: PortInfo, ProcessInfo, ConnectionState 타입)
+  - [x] 3.2 시스템 명령어 실행 유틸리티 구현 (`app/lib/systemCommands.ts`: execAsync wrapper, 에러 처리)
+  - [x] 3.3 시스템 명령어 유틸리티 단위 테스트 (`app/lib/systemCommands.test.ts`)
+  - [x] 3.4 포트 정보 수집 로직 구현 (`app/lib/ports.ts`: getListeningPorts, parsePortOutput)
+  - [x] 3.5 iptables 상태 확인 로직 구현 (`app/lib/ports.ts`: getBlockedPorts)
+  - [x] 3.6 systemd 서비스 감지 로직 구현 (`app/lib/ports.ts`: isSystemdService)
+  - [x] 3.7 포트 모니터링 로직 단위 테스트 (`app/lib/ports.test.ts`)
   - [ ] 3.8 포트 목록 조회 API 구현 (`app/api/ports/route.ts`: GET, 포트 정보 + 차단 상태 반환)
   - [ ] 3.9 프로세스 종료 API 구현 (`app/api/ports/kill/route.ts`: POST, PID 검증, kill -9 실행)
   - [ ] 3.10 서비스 재시작 API 구현 (`app/api/ports/restart/route.ts`: POST, systemctl restart 실행)

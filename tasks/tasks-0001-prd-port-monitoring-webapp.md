@@ -105,11 +105,11 @@ Based on PRD: `0001-prd-port-monitoring-webapp.md`
   - [x] 3.5 iptables 상태 확인 로직 구현 (`app/lib/ports.ts`: getBlockedPorts)
   - [x] 3.6 systemd 서비스 감지 로직 구현 (`app/lib/ports.ts`: isSystemdService)
   - [x] 3.7 포트 모니터링 로직 단위 테스트 (`app/lib/ports.test.ts`)
-  - [ ] 3.8 포트 목록 조회 API 구현 (`app/api/ports/route.ts`: GET, 포트 정보 + 차단 상태 반환)
-  - [ ] 3.9 프로세스 종료 API 구현 (`app/api/ports/kill/route.ts`: POST, PID 검증, kill -9 실행)
-  - [ ] 3.10 서비스 재시작 API 구현 (`app/api/ports/restart/route.ts`: POST, systemctl restart 실행)
-  - [ ] 3.11 포트 차단 API 구현 (`app/api/ports/block/route.ts`: POST, iptables 규칙 추가)
-  - [ ] 3.12 포트 차단 해제 API 구현 (`app/api/ports/unblock/route.ts`: POST, iptables 규칙 제거)
+  - [x] 3.8 포트 목록 조회 API 구현 (`app/api/ports/route.ts`: GET, 포트 정보 + 차단 상태 반환)
+  - [x] 3.9 프로세스 종료 API 구현 (`app/api/ports/kill/route.ts`: POST, PID 검증, kill -9 실행)
+  - [x] 3.10 서비스 재시작 API 구현 (`app/api/ports/restart/route.ts`: POST, systemctl restart 실행)
+  - [x] 3.11 포트 차단 API 구현 (`app/api/ports/block/route.ts`: POST, iptables 규칙 추가)
+  - [x] 3.12 포트 차단 해제 API 구현 (`app/api/ports/unblock/route.ts`: POST, iptables 규칙 제거)
   - [ ] 3.13 모든 API 엔드포인트 통합 테스트 (Postman 또는 curl)
 
 ### 4.0 UI 컴포넌트 및 페이지 개발

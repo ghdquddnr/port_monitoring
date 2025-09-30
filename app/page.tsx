@@ -1,8 +1,37 @@
+'use client'
+
+import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import LoadingSpinner from './components/LoadingSpinner'
+
 export default function Home() {
+  const router = useRouter()
+
+  useEffect(() => {
+    // Check if user is authenticated
+    const checkAuth = async () => {
+      try {
+        const response = await fetch('/api/ports')
+
+        if (response.ok) {
+          // User is authenticated, redirect to dashboard
+          router.push('/dashboard')
+        } else {
+          // User is not authenticated, redirect to login
+          router.push('/login')
+        }
+      } catch {
+        // On error, redirect to login
+        router.push('/login')
+      }
+    }
+
+    checkAuth()
+  }, [router])
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <h1 className="text-4xl font-bold">Port Monitoring App</h1>
-      <p className="mt-4 text-lg text-gray-600">Setup in progress...</p>
-    </main>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+      <LoadingSpinner size="lg" />
+    </div>
   )
 }

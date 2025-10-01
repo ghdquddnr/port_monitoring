@@ -142,7 +142,7 @@ Based on PRD: `0001-prd-port-monitoring-webapp.md`
   - [x] 5.5 Docker Compose 실행 테스트 (`docker-compose up -d`)
   - [x] 5.6 README.md 업데이트 (Docker 배포 가이드 추가)
   - [x] 5.7 배포 가이드 작성 (docs/DEPLOYMENT.md - Ubuntu 서버 배포 상세 가이드)
-  - [ ] 5.8 최종 통합 테스트 (Docker 컨테이너에서 모든 기능 검증 - Linux 서버 필요)
+  - [x] 5.8 최종 통합 테스트 (Ubuntu 서버 192.168.0.12에서 완료)
 
 ---
 

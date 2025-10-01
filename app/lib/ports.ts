@@ -21,14 +21,16 @@ export function parseSSOutput(output: string): PortInfo[] {
       // Skip header line
       if (line.includes('State') && line.includes('Recv-Q')) continue
 
-      // ss output format: State Recv-Q Send-Q Local Address:Port Peer Address:Port Process
+      // ss output format: Netid State Recv-Q Send-Q Local Address:Port Peer Address:Port [Process]
+      // Process field is optional (may not be present in Docker containers)
       const parts = line.trim().split(/\s+/)
       if (parts.length < 6) continue
 
-      const state = parts[0] as ConnectionState
-      const localAddr = parts[3]
-      const remoteAddr = parts[4] || ''
-      const processInfo = parts.slice(5).join(' ')
+      const netid = parts[0] // tcp/udp/tcp6/udp6
+      const state = parts[1] as ConnectionState
+      const localAddr = parts[4]
+      const remoteAddr = parts[5] || ''
+      const processInfo = parts.slice(6).join(' ')
 
       // Extract port and address
       // Handle IPv4 (0.0.0.0:80) and IPv6 (:::80 or ::1:80)
@@ -65,10 +67,14 @@ export function parseSSOutput(output: string): PortInfo[] {
 
       // Parse process information: users:(("process",pid=1234,fd=5))
       const processMatch = processInfo.match(/users:\(\("([^"]+)",pid=(\d+)/)
-      if (!processMatch) continue
 
-      const processName = processMatch[1]
-      const pid = parseInt(processMatch[2])
+      let processName = 'Unknown'
+      let pid = 0
+
+      if (processMatch) {
+        processName = processMatch[1]
+        pid = parseInt(processMatch[2])
+      }
 
       // Create unique key for port deduplication
       const portKey = `${protocol}:${port}`

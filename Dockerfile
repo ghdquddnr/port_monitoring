@@ -32,6 +32,7 @@ WORKDIR /app
 # Install required system packages for port monitoring
 RUN apk add --no-cache \
     iptables \
+    iproute2 \
     lsof \
     sudo \
     shadow
@@ -55,7 +56,9 @@ COPY --from=builder /app/package.json ./package.json
 RUN touch .env && chown nextjs:nodejs .env
 
 # Grant sudo permissions to nextjs user for specific commands
-RUN echo "nextjs ALL=(ALL) NOPASSWD: /usr/sbin/iptables, /usr/bin/lsof, /usr/bin/kill, /bin/systemctl" >> /etc/sudoers
+RUN mkdir -p /etc/sudoers.d && \
+    echo "nextjs ALL=(ALL) NOPASSWD: /usr/sbin/iptables, /usr/sbin/ss, /sbin/ss, /usr/bin/lsof, /usr/bin/kill, /bin/systemctl" > /etc/sudoers.d/nextjs && \
+    chmod 0440 /etc/sudoers.d/nextjs
 
 # Switch to nextjs user
 USER nextjs

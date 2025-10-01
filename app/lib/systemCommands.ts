@@ -85,11 +85,8 @@ export async function executeSudoCommand(
 ): Promise<ExecResult> {
   const hasRoot = await hasRootPrivileges()
 
-  if (!hasRoot) {
-    throw new Error(
-      'This operation requires root privileges. Please run with sudo or as root.'
-    )
-  }
+  // If not running as root, prepend sudo
+  const finalCommand = hasRoot ? command : `sudo ${command}`
 
-  return executeCommand(command, timeout)
+  return executeCommand(finalCommand, timeout)
 }

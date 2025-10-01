@@ -134,15 +134,15 @@ Based on PRD: `0001-prd-port-monitoring-webapp.md`
   - [ ] 4.18 UI 전체 통합 테스트 (브라우저에서 수동 테스트)
 
 ### 5.0 Docker 컨테이너화 및 배포 설정
-- [ ] 5.0 Docker 컨테이너화 및 배포 설정
-  - [ ] 5.1 `.dockerignore` 파일 생성 (`node_modules`, `.next`, `.git` 등 제외)
-  - [ ] 5.2 Dockerfile 작성 (multi-stage build, Node.js 20 alpine, production dependencies)
-  - [ ] 5.3 docker-compose.yml 작성 (host network, privileged, 환경 변수, restart policy)
-  - [ ] 5.4 Docker 이미지 빌드 및 테스트 (`docker build`, `docker run`)
-  - [ ] 5.5 Docker Compose 실행 테스트 (`docker-compose up -d`)
-  - [ ] 5.6 README.md 작성 (프로젝트 소개, 설치 방법, 실행 방법, 환경 변수 설명)
-  - [ ] 5.7 배포 가이드 작성 (Ubuntu 서버에서 실행하는 방법, 권한 설정)
-  - [ ] 5.8 최종 통합 테스트 (Docker 컨테이너에서 모든 기능 검증)
+- [x] 5.0 Docker 컨테이너화 및 배포 설정
+  - [x] 5.1 `.dockerignore` 파일 생성 (`node_modules`, `.next`, `.git` 등 제외)
+  - [x] 5.2 Dockerfile 작성 (multi-stage build, Node.js 20 alpine, production dependencies)
+  - [x] 5.3 docker-compose.yml 작성 (host network, privileged, 환경 변수, restart policy)
+  - [x] 5.4 Docker 이미지 빌드 및 테스트 (`docker build`, `docker run`)
+  - [x] 5.5 Docker Compose 실행 테스트 (`docker-compose up -d`)
+  - [x] 5.6 README.md 업데이트 (Docker 배포 가이드 추가)
+  - [x] 5.7 배포 가이드 작성 (docs/DEPLOYMENT.md - Ubuntu 서버 배포 상세 가이드)
+  - [ ] 5.8 최종 통합 테스트 (Docker 컨테이너에서 모든 기능 검증 - Linux 서버 필요)
 
 ---
 

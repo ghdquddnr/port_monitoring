@@ -62,41 +62,52 @@ npm run dev
 
 ## 🐳 Docker 배포
 
-### Docker로 실행
+### Docker Compose로 실행 (권장)
+
+1. **환경 변수 설정**
+```bash
+export ADMIN_PASSWORD="your-secure-password"
+export SESSION_SECRET="your-session-secret-key"
+```
+
+2. **컨테이너 실행**
+```bash
+docker-compose up -d
+```
+
+3. **로그 확인**
+```bash
+docker-compose logs -f port-monitoring
+```
+
+4. **컨테이너 중지**
+```bash
+docker-compose down
+```
+
+### Docker로 직접 실행
 
 1. **Docker 이미지 빌드**
 ```bash
-docker build -t port-monitor .
+docker build -t port-monitoring-webapp .
 ```
 
 2. **컨테이너 실행**
 ```bash
 docker run -d \
-  --name port-monitor \
+  --name port-monitoring \
   --network host \
   --privileged \
+  --cap-add=NET_ADMIN \
+  --cap-add=SYS_ADMIN \
+  -e ADMIN_USERNAME=admin \
   -e ADMIN_PASSWORD=your-secure-password \
+  -e SESSION_SECRET=your-session-secret-key \
+  -e PORT=8080 \
+  -v /proc:/host/proc:ro \
+  -v /sys:/host/sys:ro \
   --restart unless-stopped \
-  port-monitor
-```
-
-### Docker Compose로 실행
-
-1. **docker-compose.yml 파일 확인**
-
-2. **환경 변수 설정**
-```bash
-export ADMIN_PASSWORD=your-secure-password
-```
-
-3. **컨테이너 실행**
-```bash
-docker-compose up -d
-```
-
-4. **로그 확인**
-```bash
-docker-compose logs -f
+  port-monitoring-webapp
 ```
 
 ### 중요 사항
@@ -104,10 +115,14 @@ docker-compose logs -f
 ⚠️ **Docker 실행 시 필요한 권한**:
 - `--network host`: 호스트의 네트워크 스택에 직접 접근하여 포트 정보 조회
 - `--privileged`: 프로세스 종료, iptables 조작 등 권한이 필요한 작업 수행
+- `--cap-add=NET_ADMIN`: iptables 명령어 실행 권한
+- `--cap-add=SYS_ADMIN`: systemctl 명령어 실행 권한
 
 ⚠️ **보안 주의사항**:
 - 프로덕션 환경에서는 강력한 비밀번호 사용 필수
-- 가능하면 최소 권한 원칙에 따라 필요한 capabilities만 부여 (추후 개선 예정)
+- SESSION_SECRET는 충분히 긴 무작위 문자열로 설정
+- 가능하면 HTTPS 리버스 프록시(nginx/caddy) 사용 권장
+- 방화벽으로 8080 포트 접근 제한 (신뢰하는 IP만 허용)
 
 ## 📝 사용 방법
 

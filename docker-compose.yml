@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  port-monitoring:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: port-monitoring-webapp
+    restart: unless-stopped
+    network_mode: "host"
+    privileged: true
+    environment:
+      - NODE_ENV=production
+      - ADMIN_USERNAME=admin
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD:-changeme}
+      - SESSION_SECRET=${SESSION_SECRET:-your-secret-key-change-in-production}
+      - PORT=8080
+    volumes:
+      # Mount for reading system information
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      # Persist session data if needed
+      - ./data:/app/data
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

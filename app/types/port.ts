@@ -14,6 +14,7 @@ export type ConnectionState =
   | 'CLOSING'
   | 'LAST_ACK'
   | 'CLOSED'
+  | 'UNCONN' // UDP connection state
 
 export type Protocol = 'tcp' | 'tcp6' | 'udp' | 'udp6'
 

@@ -13,7 +13,15 @@
       "Bash(git commit:*)",
       "Bash(git remote add:*)",
       "Bash(git push:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(docker build:*)",
+      "Bash(ssh user@192.168.0.12 \"mkdir -p solomon_dev/docker/port_monitoring && echo ''Directory created successfully''\")",
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(tar:*)",
+      "Bash(curl -s http://192.168.0.12:8080)",
+      "Bash(curl -X POST http://192.168.0.12:8080/api/auth/login -H \"Content-Type: application/json\" -d '{\"\"\"\"username\"\"\"\":\"\"\"\"admin\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"admin123!\"\"\"\"}' -c /tmp/cookies.txt -v)",
+      "Bash(curl -X POST http://192.168.0.12:8080/api/auth/login -H \"Content-Type: application/json\" -d '{\"\"\"\"username\"\"\"\":\"\"\"\"admin\"\"\"\",\"\"\"\"password\"\"\"\":\"\"\"\"admin123!\"\"\"\"}' -i)"
     ],
     "deny": [],
     "ask": []

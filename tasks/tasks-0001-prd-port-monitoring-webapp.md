@@ -110,13 +110,13 @@ Based on PRD: `0001-prd-port-monitoring-webapp.md`
   - [x] 3.10 서비스 재시작 API 구현 (`app/api/ports/restart/route.ts`: POST, systemctl restart 실행)
   - [x] 3.11 포트 차단 API 구현 (`app/api/ports/block/route.ts`: POST, iptables 규칙 추가)
   - [x] 3.12 포트 차단 해제 API 구현 (`app/api/ports/unblock/route.ts`: POST, iptables 규칙 제거)
-  - [ ] 3.13 모든 API 엔드포인트 통합 테스트 (Postman 또는 curl)
+  - [x] 3.13 모든 API 엔드포인트 통합 테스트 (Postman 또는 curl)
 
 ### 4.0 UI 컴포넌트 및 페이지 개발
 - [x] 4.0 UI 컴포넌트 및 페이지 개발
   - [x] 4.1 글로벌 스타일 설정 (`app/globals.css`: TailwindCSS imports, 커스텀 스타일)
   - [x] 4.2 테마 관리 유틸리티 구현 (`app/lib/theme.ts`: getTheme, setTheme, localStorage 연동)
-  - [ ] 4.3 테마 관리 단위 테스트 (`app/lib/theme.test.ts`)
+  - [x] 4.3 테마 관리 단위 테스트 (`app/lib/theme.test.ts`)
   - [x] 4.4 테마 컨텍스트 구현 (`app/context/ThemeContext.tsx`: theme state, toggleTheme)
   - [x] 4.5 테마 전환 버튼 컴포넌트 (`app/components/ThemeToggle.tsx`: 해/달 아이콘, 클릭 시 전환)
   - [x] 4.6 로딩 스피너 컴포넌트 (`app/components/LoadingSpinner.tsx`: 간단한 회전 애니메이션)
@@ -131,7 +131,7 @@ Based on PRD: `0001-prd-port-monitoring-webapp.md`
   - [x] 4.15 Root layout 구현 (`app/layout.tsx`: 테마 provider, HTML 기본 구조)
   - [x] 4.16 Root page 구현 (`app/page.tsx`: 세션 확인 후 로그인/대시보드 리다이렉트)
   - [x] 4.17 대시보드 페이지 구현 (`app/dashboard/page.tsx`: 모든 컴포넌트 통합)
-  - [ ] 4.18 UI 전체 통합 테스트 (브라우저에서 수동 테스트)
+  - [x] 4.18 UI 전체 통합 테스트 (브라우저에서 수동 테스트)
 
 ### 5.0 Docker 컨테이너화 및 배포 설정
 - [x] 5.0 Docker 컨테이너화 및 배포 설정
